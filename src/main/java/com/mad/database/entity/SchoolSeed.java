@@ -29,14 +29,20 @@ public class SchoolSeed implements Serializable {
     @Column(name = "year")
     private int year;
     
+    @Type(type="pg-uuid")
     @Column(name="school_id")
     private UUID schoolId;
     
+    @Type(type="pg-uuid")
     @Column(name="seed_id")
     private UUID seedId;
     
 
     public SchoolSeed() {
+    }
+    
+    public void initialize(){
+        this.id = UUID.randomUUID();
     }
 
     public SchoolSeed(UUID id) {

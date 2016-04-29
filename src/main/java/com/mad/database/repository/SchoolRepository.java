@@ -15,6 +15,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author plue
  */
 public interface SchoolRepository extends JpaRepository<School, UUID> {
-    List<School> findByUniversity(String university);
+    School findByUniversity(String university);
     
 }

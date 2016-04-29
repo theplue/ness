@@ -1,8 +1,12 @@
 package com.mad.database.service;
 
+import com.mad.database.entity.Game;
 import com.mad.database.entity.School;
+import com.mad.database.entity.SchoolSeed;
 import com.mad.database.entity.Seed;
+import com.mad.database.repository.GameRepository;
 import com.mad.database.repository.SchoolRepository;
+import com.mad.database.repository.SchoolSeedRepository;
 import com.mad.database.repository.SeedRepository;
 import java.util.List;
 import java.util.UUID;
@@ -20,6 +24,10 @@ public class ServicesImpl implements Services {
     private SeedRepository seedRepo;
     @Autowired
     private SchoolRepository schoolRepo;
+    @Autowired
+    private SchoolSeedRepository schoolSeedRepo;
+    @Autowired
+    private GameRepository gameRepo;
 
     @Override
     public List<Seed> getAllSeeds() {
@@ -48,7 +56,7 @@ public class ServicesImpl implements Services {
     }
 
     @Override
-    public List<School> getByUniversity(String university) {
+    public School getByUniversity(String university) {
         return schoolRepo.findByUniversity(university);
     }
 
@@ -56,5 +64,28 @@ public class ServicesImpl implements Services {
     public School updateSchool(School school) {
         schoolRepo.save(school);
         return school;
+    }
+
+    @Override
+    public SchoolSeed createSchoolSeed(SchoolSeed schoolSeed) {
+        UUID id = schoolSeed.getSchoolId();
+        int y = schoolSeed.getYear();
+                
+        SchoolSeed seed = schoolSeedRepo.findBySchoolIdAndYear(id, y);
+        if(seed != null){
+            return seed;
+        } else {
+            schoolSeed.initialize();
+            return schoolSeedRepo.save(schoolSeed);
+            //return schoolSeed;
+        }
+        
+    }
+
+    @Override
+    public Game createGame(Game game) {
+        game.initialize();
+        gameRepo.save(game);
+        return game;
     }
 }

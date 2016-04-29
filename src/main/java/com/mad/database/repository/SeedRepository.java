@@ -14,4 +14,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author plue
  */
 public interface SeedRepository extends JpaRepository<Seed, UUID>{
+    Seed findBySeed(int seed);
 }

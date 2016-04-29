@@ -5,7 +5,9 @@
  */
 package com.mad.database.service;
 
+import com.mad.database.entity.Game;
 import com.mad.database.entity.School;
+import com.mad.database.entity.SchoolSeed;
 import com.mad.database.entity.Seed;
 import java.util.List;
 
@@ -19,6 +21,8 @@ public interface Services {
     Seed createSeed(int seed);
     List<School> getAllSchools();
     School createSchool(School school);
-    List<School> getByUniversity(String university);
+    School getByUniversity(String university);
     School updateSchool(School school);
+    SchoolSeed createSchoolSeed(SchoolSeed schoolSeed);
+    Game createGame(Game game);
 }
