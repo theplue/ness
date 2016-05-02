@@ -10,6 +10,8 @@ import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.Type;
 
@@ -43,10 +45,18 @@ public class Game implements Serializable {
     @Column(name="home")
     private UUID home;
     
+    @JoinColumn(name = "home", referencedColumnName = "id", insertable=false, updatable=false)
+    @ManyToOne
+    private School homeSchool;
+    
     @Type(type="pg-uuid")
     @Column(name="away")
     private UUID away;
 
+    @JoinColumn(name = "away", referencedColumnName = "id", insertable=false, updatable=false)
+    @ManyToOne
+    private School awaySchool;
+    
     public Game() {
     }
 
@@ -109,6 +119,22 @@ public class Game implements Serializable {
 
     public void setAway(UUID away) {
         this.away = away;
+    }
+
+    public School getHomeSchool() {
+        return homeSchool;
+    }
+
+    public void setHomeSchool(School homeSchool) {
+        this.homeSchool = homeSchool;
+    }
+
+    public School getAwaySchool() {
+        return awaySchool;
+    }
+
+    public void setAwaySchool(School awaySchool) {
+        this.awaySchool = awaySchool;
     }
    
 }

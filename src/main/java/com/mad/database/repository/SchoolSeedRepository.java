@@ -6,6 +6,7 @@
 package com.mad.database.repository;
 
 import com.mad.database.entity.SchoolSeed;
+import java.util.List;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -15,4 +16,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface SchoolSeedRepository extends JpaRepository<SchoolSeed,UUID>{
     SchoolSeed findBySchoolIdAndYear(UUID schoolId, int year);
+    List<SchoolSeed> findBySchoolId(UUID schoolId);
+    List<SchoolSeed> findBySeedId(UUID seedId);
 }

@@ -10,6 +10,8 @@ import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.Type;
 
@@ -36,6 +38,10 @@ public class SchoolSeed implements Serializable {
     @Type(type="pg-uuid")
     @Column(name="seed_id")
     private UUID seedId;
+    
+    @JoinColumn(name = "seed_id", referencedColumnName = "id", insertable=false, updatable=false)
+    @ManyToOne
+    private Seed seed;
     
 
     public SchoolSeed() {
@@ -86,5 +92,11 @@ public class SchoolSeed implements Serializable {
         this.seedId = seedId;
     }
 
-    
+    public Seed getSeed() {
+        return seed;
+    }
+
+    public void setSeed(Seed seed) {
+        this.seed = seed;
+    }    
 }

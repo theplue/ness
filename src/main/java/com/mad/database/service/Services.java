@@ -25,4 +25,5 @@ public interface Services {
     School updateSchool(School school);
     SchoolSeed createSchoolSeed(SchoolSeed schoolSeed);
     Game createGame(Game game);
+    List<SchoolSeed> getSchoolSeedHistory();
 }

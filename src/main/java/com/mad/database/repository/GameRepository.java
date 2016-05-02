@@ -6,6 +6,7 @@
 package com.mad.database.repository;
 
 import com.mad.database.entity.Game;
+import java.util.List;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -14,5 +15,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author plue
  */
 public interface GameRepository extends JpaRepository<Game, UUID>{
-    
+    List<Game> findByHomeAndAway(UUID home, UUID away);
+    List<Game> findByRound(String round);
+    List<Game> findByHomeAndAwayAndRound(UUID home, UUID away, String round);
 }

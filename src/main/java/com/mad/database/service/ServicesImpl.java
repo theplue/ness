@@ -88,4 +88,10 @@ public class ServicesImpl implements Services {
         gameRepo.save(game);
         return game;
     }
+
+    @Override
+    public List<SchoolSeed> getSchoolSeedHistory() {
+        UUID schoolId = UUID.fromString("bb29359e-c728-46a2-977d-1a9a78c2c15d");
+        return schoolSeedRepo.findBySchoolId(schoolId);
+    }
 }

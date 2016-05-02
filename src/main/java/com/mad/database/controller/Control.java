@@ -5,6 +5,7 @@
  */
 package com.mad.database.controller;
 
+import com.mad.database.entity.SchoolSeed;
 import com.mad.database.entity.Seed;
 import com.mad.database.service.Services;
 import java.util.List;
@@ -20,10 +21,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Control {
     @Autowired
-    private Services seedService;
+    private Services service;
 
     @RequestMapping(value="seed/getAllSeeds", method=RequestMethod.GET)
     public List<Seed> getAllSeeds(){
-       return seedService.getAllSeeds();
+       return service.getAllSeeds();
+    }
+    
+    @RequestMapping(value="school/getSchoolSeedHistory", method=RequestMethod.GET)
+    public List<SchoolSeed> gethSchoolSeedHistory(){
+        return service.getSchoolSeedHistory();
     }
 }
