@@ -10,6 +10,7 @@ import com.mad.database.entity.School;
 import com.mad.database.entity.SchoolSeed;
 import com.mad.database.entity.Seed;
 import java.util.List;
+import java.util.UUID;
 
 
 /**
@@ -25,5 +26,12 @@ public interface Services {
     School updateSchool(School school);
     SchoolSeed createSchoolSeed(SchoolSeed schoolSeed);
     Game createGame(Game game);
-    List<SchoolSeed> getSchoolSeedHistory();
+    List<SchoolSeed> getSchoolSeedHistory(UUID schoolId);
+    List<Game> getGamesForSchoolSeed(UUID schoolSeedId);
+    List<Game> getGamesByRound(String round);
+    List<Game> getGamesBySchoolSeedAndRound(UUID schoolSeedId, String round);
+    List<Game> getGamesforYear(int year);
+    List<SchoolSeed> getSchoolsForYear(int year);
+    List<SchoolSeed> getAllSchoolSeeds();
+
 }

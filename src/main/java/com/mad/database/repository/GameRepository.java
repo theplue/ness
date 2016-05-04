@@ -18,4 +18,5 @@ public interface GameRepository extends JpaRepository<Game, UUID>{
     List<Game> findByHomeAndAway(UUID home, UUID away);
     List<Game> findByRound(String round);
     List<Game> findByHomeAndAwayAndRound(UUID home, UUID away, String round);
+    //Game findByHomeOrAwayAndRound(UUID team, String round);
 }

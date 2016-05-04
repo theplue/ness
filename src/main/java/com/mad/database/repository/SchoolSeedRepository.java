@@ -18,4 +18,5 @@ public interface SchoolSeedRepository extends JpaRepository<SchoolSeed,UUID>{
     SchoolSeed findBySchoolIdAndYear(UUID schoolId, int year);
     List<SchoolSeed> findBySchoolId(UUID schoolId);
     List<SchoolSeed> findBySeedId(UUID seedId);
+    List<SchoolSeed> findByYear(int year);
 }

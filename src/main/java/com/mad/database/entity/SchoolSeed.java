@@ -39,6 +39,10 @@ public class SchoolSeed implements Serializable {
     @Column(name="seed_id")
     private UUID seedId;
     
+    @JoinColumn(name = "school_id", referencedColumnName = "id", insertable=false, updatable=false)
+    @ManyToOne
+    private School school;
+    
     @JoinColumn(name = "seed_id", referencedColumnName = "id", insertable=false, updatable=false)
     @ManyToOne
     private Seed seed;
@@ -90,6 +94,14 @@ public class SchoolSeed implements Serializable {
 
     public void setSeedId(UUID seedId) {
         this.seedId = seedId;
+    }
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
     }
 
     public Seed getSeed() {
